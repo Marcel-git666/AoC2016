@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F81CF21297748AD00D47F06 /* Day01.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F81CF20297748AD00D47F06 /* Day01.swift */; };
+		1F81CF23297748B700D47F06 /* Day02.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F81CF22297748B700D47F06 /* Day02.swift */; };
+		1F81CF25297748C000D47F06 /* Day03.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F81CF24297748C000D47F06 /* Day03.swift */; };
+		1F81CF2E2977494200D47F06 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F81CF2D2977494200D47F06 /* Utils.swift */; };
 		1FB48E5B290034D500B30CD7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB48E5A290034D500B30CD7 /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +27,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F81CF20297748AD00D47F06 /* Day01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day01.swift; sourceTree = "<group>"; };
+		1F81CF22297748B700D47F06 /* Day02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day02.swift; sourceTree = "<group>"; };
+		1F81CF24297748C000D47F06 /* Day03.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day03.swift; sourceTree = "<group>"; };
+		1F81CF27297748F100D47F06 /* day01.test */ = {isa = PBXFileReference; lastKnownFileType = text; path = day01.test; sourceTree = "<group>"; };
+		1F81CF28297748FA00D47F06 /* day01.input */ = {isa = PBXFileReference; lastKnownFileType = text; path = day01.input; sourceTree = "<group>"; };
+		1F81CF292977490800D47F06 /* day02.test */ = {isa = PBXFileReference; lastKnownFileType = text; path = day02.test; sourceTree = "<group>"; };
+		1F81CF2A2977491000D47F06 /* day02.input */ = {isa = PBXFileReference; lastKnownFileType = text; path = day02.input; sourceTree = "<group>"; };
+		1F81CF2B2977491900D47F06 /* day03.test */ = {isa = PBXFileReference; lastKnownFileType = text; path = day03.test; sourceTree = "<group>"; };
+		1F81CF2C2977492200D47F06 /* day03.input */ = {isa = PBXFileReference; lastKnownFileType = text; path = day03.input; sourceTree = "<group>"; };
+		1F81CF2D2977494200D47F06 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		1FB48E57290034D500B30CD7 /* AoC2016 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AoC2016; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FB48E5A290034D500B30CD7 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -38,6 +52,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F81CF26297748C900D47F06 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1F81CF2D2977494200D47F06 /* Utils.swift */,
+				1F81CF27297748F100D47F06 /* day01.test */,
+				1F81CF28297748FA00D47F06 /* day01.input */,
+				1F81CF292977490800D47F06 /* day02.test */,
+				1F81CF2A2977491000D47F06 /* day02.input */,
+				1F81CF2B2977491900D47F06 /* day03.test */,
+				1F81CF2C2977492200D47F06 /* day03.input */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		1FB48E4E290034D500B30CD7 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +86,10 @@
 			isa = PBXGroup;
 			children = (
 				1FB48E5A290034D500B30CD7 /* main.swift */,
+				1F81CF20297748AD00D47F06 /* Day01.swift */,
+				1F81CF22297748B700D47F06 /* Day02.swift */,
+				1F81CF24297748C000D47F06 /* Day03.swift */,
+				1F81CF26297748C900D47F06 /* Resources */,
 			);
 			path = AoC2016;
 			sourceTree = "<group>";
@@ -120,7 +152,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F81CF2E2977494200D47F06 /* Utils.swift in Sources */,
 				1FB48E5B290034D500B30CD7 /* main.swift in Sources */,
+				1F81CF21297748AD00D47F06 /* Day01.swift in Sources */,
+				1F81CF23297748B700D47F06 /* Day02.swift in Sources */,
+				1F81CF25297748C000D47F06 /* Day03.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
