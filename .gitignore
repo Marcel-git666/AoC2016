@@ -1,2 +1,4 @@
 Resources/
 *.xcuserstate
+*.test
+*.input
