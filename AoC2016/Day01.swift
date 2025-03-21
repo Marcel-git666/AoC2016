@@ -7,15 +7,27 @@
 
 import Foundation
 
-enum Day01 {
-    static func run() {
-        let input = try! readFile("day01.input")
-        print(input)
-        let result = day01Part1(input)
-        print(result)
-        print(day01Part2(input))
+enum Day01: DayChallenge {
+    static func part1(_ input: String) -> String {
+        // Your part 1 implementation
+        return "\(day01Part1(input))"
+    }
+
+    static func part2(_ input: String) -> String {
+        // Your part 2 implementation
+        return "\(day01Part2(input))"
     }
 }
+
+//enum Day01 {
+//    static func run() {
+//        let input = try! readFile("day01.input")
+//        print(input)
+//        let result = day01Part1(input)
+//        print(result)
+//        print(day01Part2(input))
+//    }
+//}
 
 
 func day01Part1(_ input: String) -> Int {
@@ -23,7 +35,7 @@ func day01Part1(_ input: String) -> Int {
     var y = 0
     var orientation = 0
     let inputArray = input.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: ", ")
-    print(inputArray)
+//    print(inputArray)
     for instruction in inputArray {
         let direction = instruction.prefix(1)
         let steps = Int(instruction.dropFirst())!
@@ -50,7 +62,7 @@ func day01Part2(_ input: String) -> Int {
     var orientation = 0
     let inputArray = input.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: ", ")
     visitedPlaces.insert("\(x):\(y)")
-    print(inputArray)
+//    print(inputArray)
     for instruction in inputArray {
         let direction = instruction.prefix(1)
         let steps = Int(instruction.dropFirst())!
