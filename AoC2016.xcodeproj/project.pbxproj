@@ -68,12 +68,12 @@
 		1FB48E59290034D500B30CD7 /* AoC2016 */ = {
 			isa = PBXGroup;
 			children = (
-				1FB48E5A290034D500B30CD7 /* main.swift */,
-				1FB5FEFE2D8DF12900B3665C /* Utils */,
 				1F81CF20297748AD00D47F06 /* Day01.swift */,
 				1F81CF22297748B700D47F06 /* Day02.swift */,
 				1F81CF24297748C000D47F06 /* Day03.swift */,
+				1FB48E5A290034D500B30CD7 /* main.swift */,
 				1FB5FEF52D8DF06C00B3665C /* Resources */,
+				1FB5FEFE2D8DF12900B3665C /* Utils */,
 			);
 			path = AoC2016;
 			sourceTree = "<group>";

@@ -25,26 +25,19 @@ func day01Part1(_ input: String) -> Int {
     let inputArray = input.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: ", ")
     print(inputArray)
     for instruction in inputArray {
-        switch instruction.prefix(1) {
-        case "R": orientation = (orientation + 1)
-            if orientation == 4 { orientation = 0 }
-            switch orientation {
-            case 0: y += Int(instruction.suffix(instruction.count - 1))!
-            case 1: x += Int(instruction.suffix(instruction.count - 1))!
-            case 2: y -= Int(instruction.suffix(instruction.count - 1))!
-            case 3: x -= Int(instruction.suffix(instruction.count - 1))!
-            default: print("Error: invalid orientation value.")
-            }
-        case "L": orientation = (orientation - 1)
-            if orientation == -1 { orientation = 3 }
-            switch orientation {
-            case 0: y += Int(instruction.suffix(instruction.count - 1))!
-            case 1: x += Int(instruction.suffix(instruction.count - 1))!
-            case 2: y -= Int(instruction.suffix(instruction.count - 1))!
-            case 3: x -= Int(instruction.suffix(instruction.count - 1))!
-            default: print("Error: invalid orientation value.")
-            }
-        default: print("Error: invalid instruction \(instruction)")
+        let direction = instruction.prefix(1)
+        let steps = Int(instruction.dropFirst())!
+        if direction == "R" {
+            orientation = (orientation + 1) % 4
+        } else {
+            orientation = (orientation - 1 + 4) % 4
+        }
+        switch orientation {
+        case 0: y += steps
+        case 1: x += steps
+        case 2: y -= steps
+        case 3: x -= steps
+        default: print("Error: invalid orientation value.")
         }
     }
     return abs(x) + abs(y)
@@ -53,64 +46,38 @@ func day01Part1(_ input: String) -> Int {
 func day01Part2(_ input: String) -> Int {
     var x = 0
     var y = 0
-    func isVisited(x: Int, y: Int, visitedPlaces: inout [String]) -> Bool {
-        let visitedPlace = String(format: "%03d:%03d", x, y)
-        if visitedPlaces.contains(visitedPlace) {
-            return true
-        } else {
-            visitedPlaces.append(visitedPlace)
-            return false
-        }
-    }
+    var visitedPlaces = Set<String>()
     var orientation = 0
-    var visitedPlaces: [String] = []
     let inputArray = input.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: ", ")
+    visitedPlaces.insert("\(x):\(y)")
     print(inputArray)
     for instruction in inputArray {
-        switch instruction.prefix(1) {
-            case "R": orientation = (orientation + 1) % 4
-                switch orientation {
-                case 0: for _ in 0..<Int(instruction.suffix(instruction.count - 1))! {
-                    y += 1
-                    if isVisited(x: x, y: y, visitedPlaces: &visitedPlaces) { return abs(x) + abs(y)}
-                }
-                case 1: for _ in 0..<Int(instruction.suffix(instruction.count - 1))! {
-                    x += 1
-                    if isVisited(x: x, y: y, visitedPlaces: &visitedPlaces) { return abs(x) + abs(y)}
-                }
-                case 2: for _ in 0..<Int(instruction.suffix(instruction.count - 1))! {
-                    y -= 1
-                    if isVisited(x: x, y: y, visitedPlaces: &visitedPlaces) { return abs(x) + abs(y)}
-                }
-                case 3: for _ in 0..<Int(instruction.suffix(instruction.count - 1))! {
-                    x -= 1
-                    if isVisited(x: x, y: y, visitedPlaces: &visitedPlaces) { return abs(x) + abs(y)}
-                }
-                default: print("Error: invalid orientation value R \(orientation).")
-                }
-            case "L": orientation = (orientation - 1)
-                if orientation == -1 { orientation = 3 }
-                switch orientation {
-                case 0: for _ in 0..<Int(instruction.suffix(instruction.count - 1))! {
-                    y += 1
-                    if isVisited(x: x, y: y, visitedPlaces: &visitedPlaces) { return abs(x) + abs(y)}
-                }
-                case 1: for _ in 0..<Int(instruction.suffix(instruction.count - 1))! {
-                    x += 1
-                    if isVisited(x: x, y: y, visitedPlaces: &visitedPlaces) { return abs(x) + abs(y)}
-                }
-                case 2: for _ in 0..<Int(instruction.suffix(instruction.count - 1))! {
-                    y -= 1
-                    if isVisited(x: x, y: y, visitedPlaces: &visitedPlaces) { return abs(x) + abs(y)}
-                }
-                case 3: for _ in 0..<Int(instruction.suffix(instruction.count - 1))! {
-                    x -= 1
-                    if isVisited(x: x, y: y, visitedPlaces: &visitedPlaces) { return abs(x) + abs(y)}
-                }
-                default: print("Error: invalid orientation value L \(orientation).")
-                }
-            default: print("Error: invalid instruction \(instruction)")
+        let direction = instruction.prefix(1)
+        let steps = Int(instruction.dropFirst())!
+
+        // Změna orientace
+        if direction == "R" {
+            orientation = (orientation + 1) % 4
+        } else {
+            orientation = (orientation - 1 + 4) % 4
+        }
+
+        // Pohyb po jednom kroku a kontrola návštěv
+        for _ in 0..<steps {
+            switch orientation {
+            case 0: y += 1
+            case 1: x += 1
+            case 2: y -= 1
+            case 3: x -= 1
+            default: print("Error: invalid orientation value.")
             }
+
+            let position = "\(x):\(y)"
+            if visitedPlaces.contains(position) {
+                return abs(x) + abs(y)
+            }
+            visitedPlaces.insert(position)
+        }
     }
     return abs(x) + abs(y)
 }

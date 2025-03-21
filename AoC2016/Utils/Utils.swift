@@ -8,8 +8,14 @@
 import Foundation
 
 func readFile(_ name: String) throws -> String {
-    let projectURL = URL(fileURLWithPath: #filePath).deletingLastPathComponent()
-    let fileURL = projectURL.appendingPathComponent(name)
+    // Start at the directory containing this file (Utils directory)
+    let utilsDirectory = URL(fileURLWithPath: #filePath).deletingLastPathComponent()
+    // Go up one level to the AoC2016 directory
+    let projectDirectory = utilsDirectory.deletingLastPathComponent()
+    // Now go to the Resources directory
+    let resourcesDirectory = projectDirectory.appendingPathComponent("Resources")
+    // Finally, append the filename
+    let fileURL = resourcesDirectory.appendingPathComponent(name)
     do {
         let data = try Data(contentsOf: fileURL)
         guard let result = String(data: data, encoding: .utf8) else {
