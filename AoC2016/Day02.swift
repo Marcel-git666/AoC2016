@@ -38,25 +38,72 @@ Dial:
 
 */
 
-func day02Part1(_ input: String) -> Int {
+func day02Part1(_ input: String) -> String {
     let table = ["1241", "2351", "3362", "1574", "2684", "3695", "4877", "5987", "6998"]
-    let lines = input.components(separatedBy: .newlines)
-    var index = 4
+    let lines = input.components(separatedBy: .newlines).filter { !$0.isEmpty }
+    var index = "5"
+    var code = ""
     for line in lines {
-        let chars = Array(line)
-        for char in chars {
-            switch char {
-            case "U": index = Int(table[index][1])!
-                print(index)
-            default: index = 0
-            }
+        for char in line {
+            index = getCode(for: char, index, table)
         }
+        code += index
     }
-    return 0
+    return code
 }
 
-func day02Part2(_ input: String) -> Int {
+func getCode(for char: Character, _ index: String, _ table: [String]) -> String {
+    let position: Int
+    switch index {
+    case "1", "2", "3", "4", "5", "6", "7", "8", "9":
+        position = Int(index)! - 1
+    case "A":
+        position = 9
+    case "B":
+        position = 10
+    case "C":
+        position = 11
+    case "D":
+        position = 12
+    default:
+        fatalError("Invalid index: \(index)")
+    }
+    let directions = Array(table[position])
+    switch char {
+    case "U":
+        return String(directions[0])
+    case "D":
+        return String(directions[2])
+    case "L":
+        return String(directions[3])
+    case "R":
+        return String(directions[1])
+    default:
+        return index
+    }
+}
 
-    return 0
+/*
+      1
+    2 3 4
+  5 6 7 8 9
+    A B C
+      D
+
+ URDL
+*/
+
+func day02Part2(_ input: String) -> String {
+    let table = ["1131", "2362", "1472", "4483", "5655", "27A5", "38B6", "49C7", "9998", "6BAA", "7CDA", "8CCB", "BDDD"]
+    let lines = input.components(separatedBy: .newlines).filter { !$0.isEmpty }
+    var index = "5"
+    var code = ""
+    for line in lines {
+        for char in line {
+            index = getCode(for: char, index, table)
+        }
+        code += index
+    }
+    return code
 }
 

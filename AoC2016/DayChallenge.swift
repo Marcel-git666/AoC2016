@@ -24,10 +24,10 @@ extension DayChallenge {
             let realInput = try readFile("day\(dayNumber).input")
 
             print("Part 1 (Test): \(part1(testInput))")
-            // print("Part 1 (Real): \(part1(realInput))")
+            print("Part 1 (Real): \(part1(realInput))")
 
             print("Part 2 (Test): \(part2(testInput))")
-            // print("Part 2 (Real): \(part2(realInput))")
+            print("Part 2 (Real): \(part2(realInput))")
         } catch {
             print("Error: \(error)")
         }
