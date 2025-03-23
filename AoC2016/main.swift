@@ -11,6 +11,7 @@ func runAllDays() {
     let days: [DayChallenge.Type] = [
         Day01.self,
         Day02.self,
+        Day03.self
         // Add more days as you progress
     ]
 
